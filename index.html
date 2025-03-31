@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebration Page</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ff4500;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .gallery-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            display: none;
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .gallery img.active {
+            display: block;
+            opacity: 1;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-10vh); }
+            to { transform: translateY(100vh); }
+        }
+        .message-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffdd57;
+            border-radius: 10px;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .hidden-message {
+            display: none;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Congratulations, Friend!</h1>
+    
+    <div class="gallery-container">
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <div class="gallery">
+            <img src="friend1.jpg" class="active" alt="Friend's Achievement">
+            <img src="friend2.jpg" alt="Friend's Achievement 2">
+            <img src="friend3.jpg" alt="Friend's Achievement 3">
+        </div>
+        <button class="next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+
+    <div class="message-box" onclick="showMessage()">Click to see a message!</div>
+    <div class="hidden-message" id="message">You're amazing! Wishing you more success ahead! 🎉</div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+
+        function changeImage(direction) {
+            images[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            images[currentImageIndex].classList.add('active');
+        }
+        
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                document.body.appendChild(confetti);
+                
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.top = Math.random() * -10 + "vh";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+            }
+        }
+        createConfetti();
+    </script>
+</body>
+</html>
