@@ -82,6 +82,21 @@
             font-size: 1.2rem;
             color: #2d2d2d;
         }
+        .cute-characters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .cute-characters img {
+            width: 100px;
+            height: auto;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
@@ -99,6 +114,12 @@
 
     <div class="message-box" onclick="showMessage()">Click to see a message!</div>
     <div class="hidden-message" id="message">You're amazing! Wishing you more success ahead! 🎉</div>
+
+    <div class="cute-characters">
+        <img src="cute1.gif" alt="Cute Character 1">
+        <img src="cute2.gif" alt="Cute Character 2">
+        <img src="cute3.gif" alt="Cute Character 3">
+    </div>
 
     <script>
         let currentImageIndex = 0;
