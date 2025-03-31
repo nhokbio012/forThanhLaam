@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celebration Page</title>
+    <title>for ThanhLaam - the first present</title>
     <style>
         body {
             text-align: center;
@@ -97,10 +97,13 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+        .music-player {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Congratulations, Friend!</h1>
+    <h1>Congratulations, ThanhLaam!</h1>
     
     <div class="gallery-container">
         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
@@ -112,13 +115,17 @@
         <button class="next" onclick="changeImage(1)">&#10095;</button>
     </div>
 
-    <div class="message-box" onclick="showMessage()">Click to see a message!</div>
-    <div class="hidden-message" id="message">You're amazing! Wishing you more success ahead! 🎉</div>
+    <div class="message-box" onclick="showMessage()">I hope ...</div>
+    <div class="hidden-message" id="message">you know that you are amazing, never alone, and truly deserve the best 🎉</div>
 
     <div class="cute-characters">
         <img src="cute1.gif" alt="Cute Character 1">
         <img src="cute2.gif" alt="Cute Character 2">
         <img src="cute3.gif" alt="Cute Character 3">
+    </div>
+
+    <div class="music-player">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5S48exJMllV1UZfluzUpbp?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
     <script>
