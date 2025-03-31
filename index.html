@@ -10,6 +10,7 @@
             font-family: Arial, sans-serif;
             background-color: lightyellow;
             overflow-y: auto;
+            transition: background-color 3s ease-in-out;
         }
         .popup {
             position: fixed;
@@ -224,6 +225,18 @@
             }
         }
         createConfetti();
+        
+        function changeBackgroundColor() {
+            let colors = ['#F5FFFA', '#FFA600'];
+            let index = 0;
+            function transitionColors() {
+                document.body.style.backgroundColor = colors[index];
+                index = (index + 1) % colors.length;
+                setTimeout(transitionColors, 2000);
+            }
+            transitionColors();
+        }
+        changeBackgroundColor();
     </script>
 </body>
 </html>
