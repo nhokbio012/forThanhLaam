@@ -12,20 +12,6 @@
             overflow: hidden;
             margin: 0;
         }
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            display: none;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
         .popup {
             position: fixed;
             top: 0;
@@ -57,18 +43,21 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        .gallery-container, .message-box, .cute-characters {
+        .gallery-container, .message-box, .cute-characters, .music-player {
             display: none;
+        }
+        .music-player {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
         }
     </style>
 </head>
 <body>
     <div class="popup" onclick="openPresent()">
-        <div class="popup-content">🎁 Click to open the present! 🎁</div>
-    </div>
-    
-    <div class="video-background">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/7qM8lUIcS9M?si=JwWp1-kb7bypgSyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="popup-content">🎁 For ThanhLaam - The First Present 🎁</div>
     </div>
     
     <h1>Congratulations, Friend!</h1>
@@ -92,14 +81,21 @@
         <img src="cute3.gif" alt="Cute Character 3">
     </div>
 
+    <div class="music-player">
+        <iframe id="spotify-player" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5S48exJMllV1UZfluzUpbp?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>?utm_source=generator" width="300" height="80" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </div>
+
     <script>
         function openPresent() {
             document.querySelector('.popup').style.display = 'none';
-            document.querySelector('.video-background').style.display = 'block';
             document.querySelector('h1').style.display = 'block';
             document.querySelector('.gallery-container').style.display = 'flex';
             document.querySelector('.message-box').style.display = 'block';
             document.querySelector('.cute-characters').style.display = 'flex';
+            document.querySelector('.music-player').style.display = 'block';
+            
+            // Attempt to autoplay Spotify
+            document.getElementById('spotify-player').src += "&autoplay=1";
         }
     </script>
 </body>
