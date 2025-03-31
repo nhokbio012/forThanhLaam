@@ -164,8 +164,8 @@
         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
         <div class="gallery">
             <img src="images/p1.jpg" class="active" alt="Friend's Achievement">
-            <img src="images/p2.jpg" alt="Friend's Achievement 2">
-            <img src="images/p3.jpg" alt="Friend's Achievement 3">
+            <img src="images/p2.png" alt="Friend's Achievement 2">
+            <img src="images/p3.png" alt="Friend's Achievement 3">
         </div>
         <button class="next" onclick="changeImage(1)">&#10095;</button>
     </div>
@@ -210,14 +210,16 @@
         }
 
         function createConfetti() {
+            const symbols = ['🎉', '🎈', '✨', '💖', '🥳'];
             for (let i = 0; i < 100; i++) {
                 let confetti = document.createElement("div");
                 confetti.classList.add("confetti");
+                confetti.textContent = symbols[Math.floor(Math.random() * symbols.length)];
                 document.body.appendChild(confetti);
                 
-                confetti.style.left = Math.random() * 100 + "vw";
-                confetti.style.top = Math.random() * -10 + "vh";
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = Math.random() * 300 + "vw";
+                confetti.style.top = Math.random() * -20 + "vh";
+                confetti.style.fontSize = Math.random() * 24 + 12 + "px";
                 confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
             }
         }
