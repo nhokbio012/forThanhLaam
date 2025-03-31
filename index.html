@@ -88,19 +88,49 @@
         }
         .message-box {
             margin-top: 20px;
-            padding: 20px;
+            padding: 10px;
             background-color: #ffdd57;
-            border-radius: 10px;
+            border-radius: 20px;
             display: inline-block;
             cursor: pointer;
             font-size: 1.2rem;
             font-weight: bold;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .message-box:hover {
+            background-color: #ffbb00;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+        .message-box:active {
+            background-color: #ffaa00;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
         }
         .hidden-message {
             display: none;
             margin-top: 10px;
+            padding: 10px;
+            background-color: #ffdd57;
+            border-radius: 20px;
             font-size: 1.2rem;
+            font-weight: bold;
             color: #2d2d2d;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+        .hidden-message:hover {
+            background-color: #ffbb00;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+        .hidden-message:active {
+            background-color: #ffaa00;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
         }
         .cute-characters {
             display: flex;
@@ -128,7 +158,7 @@
         <div class="popup-content">🎁 For ThanhLaam - The First Present 🎁</div>
     </div>
 
-    <h1>Congratulations, Friend!</h1>
+    <h1>Congratulations,Thanh Lâm! 🎉</h1>
     
     <div class="gallery-container">
         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
@@ -141,7 +171,7 @@
     </div>
 
     <div class="message-box" onclick="showMessage()">I hope ...</div>
-    <div class="hidden-message" id="message">you know that you are the best and you are not alone. Congratulations, Thanh Lâm🎉</div>
+    <div class="hidden-message" id="message">you know that you are the best and you are not alone. Cheers!!!🎉</div>
 
     <div class="cute-characters">
         <img src="cute1.gif" alt="Cute Character 1">
