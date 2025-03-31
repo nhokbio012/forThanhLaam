@@ -3,107 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>for ThanhLaam - the first present</title>
+    <title>Celebration Page</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            background-color: black;
             overflow: hidden;
+            margin: 0;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         h1 {
             font-size: 3rem;
             color: #ff4500;
             animation: bounce 2s infinite;
+            position: relative;
+            display: none;
         }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        .gallery-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 300px;
-            height: auto;
-            border-radius: 15px;
+        .gallery-container, .message-box, .cute-characters {
             display: none;
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
-        }
-        .gallery img.active {
-            display: block;
-            opacity: 1;
-        }
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            opacity: 0.7;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            from { transform: translateY(-10vh); }
-            to { transform: translateY(100vh); }
-        }
-        .message-box {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #ffdd57;
-            border-radius: 10px;
-            display: inline-block;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        .hidden-message {
-            display: none;
-            margin-top: 10px;
-            font-size: 1.2rem;
-            color: #2d2d2d;
-        }
-        .cute-characters {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        .cute-characters img {
-            width: 100px;
-            height: auto;
-            animation: float 3s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .music-player {
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Congratulations, ThanhLaam!</h1>
+    <div class="popup" onclick="openPresent()">
+        <div class="popup-content">🎁 Click to open the present! 🎁</div>
+    </div>
+    
+    <div class="video-background">
+        <iframe id="video" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    
+    <h1>Congratulations, Friend!</h1>
     
     <div class="gallery-container">
         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
@@ -115,8 +83,8 @@
         <button class="next" onclick="changeImage(1)">&#10095;</button>
     </div>
 
-    <div class="message-box" onclick="showMessage()">I hope ...</div>
-    <div class="hidden-message" id="message">you know that you are amazing, never alone, and truly deserve the best 🎉</div>
+    <div class="message-box" onclick="showMessage()">Click to see a message!</div>
+    <div class="hidden-message" id="message">You're amazing! Wishing you more success ahead! 🎉</div>
 
     <div class="cute-characters">
         <img src="cute1.gif" alt="Cute Character 1">
@@ -124,37 +92,15 @@
         <img src="cute3.gif" alt="Cute Character 3">
     </div>
 
-    <div class="music-player">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5S48exJMllV1UZfluzUpbp?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
     <script>
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.gallery img');
-
-        function changeImage(direction) {
-            images[currentImageIndex].classList.remove('active');
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            images[currentImageIndex].classList.add('active');
+        function openPresent() {
+            document.querySelector('.popup').style.display = 'none';
+            document.querySelector('.video-background').style.display = 'block';
+            document.querySelector('h1').style.display = 'block';
+            document.querySelector('.gallery-container').style.display = 'flex';
+            document.querySelector('.message-box').style.display = 'block';
+            document.querySelector('.cute-characters').style.display = 'flex';
         }
-        
-        function showMessage() {
-            document.getElementById('message').style.display = 'block';
-        }
-
-        function createConfetti() {
-            for (let i = 0; i < 100; i++) {
-                let confetti = document.createElement("div");
-                confetti.classList.add("confetti");
-                document.body.appendChild(confetti);
-                
-                confetti.style.left = Math.random() * 100 + "vw";
-                confetti.style.top = Math.random() * -10 + "vh";
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
-            }
-        }
-        createConfetti();
     </script>
 </body>
 </html>
