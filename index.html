@@ -11,6 +11,26 @@
             background-color: lightyellow;
             overflow: hidden;
         }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
         h1 {
             font-size: 3rem;
             color: #ff4500;
@@ -99,10 +119,15 @@
         }
         .music-player {
             margin-top: 20px;
+            border-radius: 10px; /* Optional rounded corners */
         }
     </style>
 </head>
 <body>
+    <div class="popup" onclick="openPresent()">
+        <div class="popup-content">🎁 For ThanhLaam - The First Present 🎁</div>
+    </div>
+
     <h1>Congratulations, Friend!</h1>
     
     <div class="gallery-container">
@@ -131,6 +156,18 @@
     <script>
         let currentImageIndex = 0;
         const images = document.querySelectorAll('.gallery img');
+
+        function openPresent() {
+            document.querySelector('.popup').style.display = 'none';
+            document.querySelector('h1').style.display = 'block';
+            document.querySelector('.gallery-container').style.display = 'flex';
+            document.querySelector('.message-box').style.display = 'block';
+            document.querySelector('.cute-characters').style.display = 'flex';
+            document.querySelector('.music-player').style.display = 'block';
+            
+            // Attempt to autoplay Spotify
+            document.getElementById('spotify-player').src += "&autoplay=1";
+        }
 
         function changeImage(direction) {
             images[currentImageIndex].classList.remove('active');
